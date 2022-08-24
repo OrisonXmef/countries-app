@@ -1,27 +1,39 @@
-import React, {useEffect, useState} from 'react'
-
-export default function HomeScreen() {
-    const [countries, setCountries]= useState([]);
-    const [Isspending, setIsspending] = useState(false)
-    useEffect(() =>{
-        setIsspending(true)
-        fetch("https://restcomtries.com/v3.1/all")
-        .then ((res) => res.json())
-        .then ((date) =>{
-            setCountries();
-        })
-        .cat((err)=>console.log("error: ",err))
-        .finally (()=>{});
-        setIsspending(false)
-    }, []);
-    if (Isspending)return <h1> Loading....</h1>
+import React from 'react'
+import products from '../datasource/product'
+function HomeScreen() {
   return (
-    <div>{countries.map((country) =>(
-    <div className="card">
-        <img src={country.flag.png} alt={country.name.common}/>
-        <h5> country.name.commmon</h5>
-    </div>    
-    ))}
+    <div className='product'>
+       <div className='firstrow'>
+       <div className='card'>
+       <h2>Quality phones</h2>
+        <div style={{
+            display:"grid",
+            gridTemplateColumns:"1fr 1fr 1fr 1fr",
+            maxWidth:"90%",
+            margin:"20px auto"
+        }}>
+        {
+        products.map(product=>(
+            <div style={{
+                display:"flex",
+                flexDirection:"column",
+                justifyContent:"center",
+                border:"1px solid #dedede",
+                padding:"10px",
+                margin:"10px"
+            }}>
+            <img src={product.image} alt="" height={"230px"}/>
+            <h5>{product.name}</h5>
+            <h5>GH₵{product.price.toFixed(2)}</h5>
+            </div>
+        ))
+        }
+        </div>
+       </div>
+
+       </div>
     </div>
   )
 }
+
+export default HomeScreen

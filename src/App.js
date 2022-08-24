@@ -1,7 +1,7 @@
 import {BrowserRouter, Route,Routes } from "react-router-dom";
 import HomeScreen from "./screans/HomeScreen";
 import ContactScreen from "./screans/ContactScreen";
-import DetailScreen from "./screans/DetailScreen";
+import ProductScreen from "./screans/ProductScreen";
 import AboutScreen from "./screans/AboutScreen";
 import Header from "./Components/Header";
 
@@ -14,7 +14,7 @@ function App(){
       <Route path="/" element={<HomeScreen />}/>
       <Route path="/contact" element={<ContactScreen />}/>
       <Route path="/about" element={<AboutScreen />}/>
-      <Route path="/detail/:name" element={<DetailScreen />}/>
+      <Route path="/product" element={<ProductScreen />}/>
     </Routes></div>
     </BrowserRouter>
   )
